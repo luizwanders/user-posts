@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 export class AxiosHttpClient {
-  async get({ url, params }) {
-    const result = await axios.get(url, { params })
+  async get(url) {
+    const result = await axios.get(url)
     return result.data
   }
 }
