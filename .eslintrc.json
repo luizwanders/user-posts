@@ -19,10 +19,19 @@
         "ecmaVersion": "latest"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off",
-        "eslint no-useless-constructor": "off"
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "semi": false,
+          "printWidth": 80
+        }
+      ],
+      "react/react-in-jsx-scope": "off",
+      "eslint no-useless-constructor": "off"
     }
 }
