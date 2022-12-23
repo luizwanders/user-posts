@@ -22,7 +22,6 @@ export function App() {
       setUsers(result)
       setListPosts(result[0].posts)
     } catch (error) {
-      console.log(error)
       if (error) setErrorMessage(true)
     } finally {
       setIsLoading(false)
