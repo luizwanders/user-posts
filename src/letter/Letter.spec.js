@@ -67,7 +67,7 @@ describe('Letter', function () {
     expect(response).toEqual(output)
   })
 
-  it('test if the mapPostData() method maps the post data correctly', () => {
+  it('check if the mapPostData() method maps the post data correctly', () => {
     const letter = new Letter()
 
     const input = API_POSTS_OBJECT
@@ -89,7 +89,7 @@ describe('Letter', function () {
     expect(response).toEqual(output)
   })
 
-  it('test if the getUsersInfo() method returns the expected post data', async () => {
+  it('check if the getUsersInfo() method returns the expected post data', async () => {
     const letter = new Letter()
     const input = API_USER_OBJECT
     const { street, suite, zipcode, city } = input[0].address
@@ -118,7 +118,7 @@ describe('Letter', function () {
     expect(response).toEqual(output)
   })
 
-  it('test if the getPostsInfo() method returns the expected post data', async () => {
+  it('check if the getPostsInfo() method returns the expected post data', async () => {
     const letter = new Letter()
     const input = API_POSTS_OBJECT
 
