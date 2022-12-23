@@ -1,4 +1,5 @@
 import HttpClient from '../infra/clients/HttpClient'
+import { ClientRequestError } from '../tests/utils/client-request-error'
 
 export class Letter {
   baseUrl = 'https://jsonplaceholder.typicode.com'
@@ -25,7 +26,7 @@ export class Letter {
 
       return user
     } catch (error) {
-      console.log(error)
+      throw new ClientRequestError(error)
     }
   }
 
@@ -56,10 +57,18 @@ export class Letter {
   }
 
   async getPostInfo(id) {
-    return await this.httpClient.get(`${this.baseUrl}/posts`)
+    try {
+      return await this.httpClient.get(`${this.baseUrl}/posts`)
+    } catch (error) {
+      throw new ClientRequestError(error.message)
+    }
   }
 
   async getUsersInfo() {
-    return await this.httpClient.get(`${this.baseUrl}/users`)
+    try {
+      return await this.httpClient.get(`${this.baseUrl}/users`)
+    } catch (error) {
+      throw new ClientRequestError(error.message)
+    }
   }
 }

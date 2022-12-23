@@ -20,6 +20,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .error-alert {
+    background: rgba(224, 126, 126, 0.8);
+    padding: 1rem;
+    color: rgb(39, 8, 8);
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-weight: 100;
+  }
 }
 
 .container {

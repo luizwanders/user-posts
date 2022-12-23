@@ -8,23 +8,39 @@ export function App() {
   const [users, setUsers] = useState([])
   const [listPosts, setListPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [errorMessage, setErrorMessage] = useState(false)
 
   useEffect(() => {
     loadUsers()
   }, [])
 
   async function loadUsers() {
-    setIsLoading(true)
-    const result = await letter.get()
-    setIsLoading(false)
-    setUsers(result)
-    setListPosts(result[0].posts)
-    setName(result[0].name)
+    try {
+      setIsLoading(true)
+      const result = await letter.get()
+      setIsLoading(false)
+      setUsers(result)
+      setListPosts(result[0].posts)
+    } catch (error) {
+      console.log(error)
+      if (error) setErrorMessage(true)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handlePost = (posts) => {
     setListPosts([...posts])
   }
+
+  if (errorMessage)
+    return (
+      <div className="app">
+        <div className="error-alert">
+          Oops! Something went wrong when trying to bring the data, try again.
+        </div>
+      </div>
+    )
 
   if (isLoading) return <div className="app">Loadding...</div>
 
